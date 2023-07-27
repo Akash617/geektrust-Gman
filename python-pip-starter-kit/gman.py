@@ -16,22 +16,23 @@ class Gman():
         return True
 
 
-    # Turn Gman 90 degrees to face a direction he needs to go
-    def turn(self, opposite, x_coordinates, y_coordinates):
+    def which_way_to_turn(self, opposite, x_coordinates, y_coordinates):
         if opposite == "EW":
             if (y_coordinates - self.__y_coordinates) < 0:
-                self.__direction = "S"
-                self.__power -= self.__cost_to_turn
+                return "S"
             else:
-                self.__direction = "N"
-                self.__power -= self.__cost_to_turn
+                return "N"
         elif opposite == "NS":
             if (x_coordinates - self.__x_coordinates) < 0:
-                self.__direction = "W"
-                self.__power -= self.__cost_to_turn
+                return "W"
             else:
-                self.__direction = "E"
-                self.__power -= self.__cost_to_turn
+                return "E"
+
+
+    # Turn Gman 90 degrees to face a direction he needs to go
+    def turn(self, opposite, x_coordinates, y_coordinates):
+        self.__direction = self.which_way_to_turn(opposite, x_coordinates, y_coordinates)
+        self.__power -= self.__cost_to_turn
 
 
     # Move the Gman by 1 step in the direction he's facing
