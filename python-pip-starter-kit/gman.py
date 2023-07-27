@@ -4,6 +4,8 @@ class Gman():
         self.__y = y
         self.__direction = direction
         self.__power = 200
+        self.__cost_to_turn = 5
+        self.__cost_to_move = 10
 
 
     def on_target(self, x, y):
@@ -17,17 +19,17 @@ class Gman():
         if opposite == "EW":
             if (y - self.__y) < 0:
                 self.__direction = "S"
-                self.__power -= 5
+                self.__power -= self.__cost_to_turn
             elif (y - self.__y) > 0:
                 self.__direction = "N"
-                self.__power -= 5
+                self.__power -= self.__cost_to_turn
         elif opposite == "NS":
             if (x - self.__x) < 0:
                 self.__direction = "W"
-                self.__power -= 5
+                self.__power -= self.__cost_to_turn
             elif (x - self.__x) > 0:
                 self.__direction = "E"
-                self.__power -= 5
+                self.__power -= self.__cost_to_turn
 
 
     def move(self, x, y):
@@ -36,7 +38,7 @@ class Gman():
         self.__x += direction_assocation[self.__direction][0]
         self.__y += direction_assocation[self.__direction][1]
 
-        self.__power -= 10
+        self.__power -= self.__cost_to_move
 
 
     def turn_or_move(self, x, y):
