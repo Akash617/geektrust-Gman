@@ -60,7 +60,7 @@ class Gman():
 
     # Move or turn Gman until he reaches the target and return the remaining power
     def go_to_target(self, x_coordinates, y_coordinates):
-        while not self.on_target(x_coordinates, y_coordinates):
+        while not self.is_on_target(x_coordinates, y_coordinates):
             self.turn_or_move(x_coordinates, y_coordinates)
 
         return self.__power

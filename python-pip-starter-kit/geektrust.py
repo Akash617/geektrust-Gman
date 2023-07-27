@@ -1,7 +1,6 @@
 from sys import argv
 import file_reader
 
-
 def main():
 
     if len(argv) != 2:

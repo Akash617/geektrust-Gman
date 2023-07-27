@@ -16,8 +16,8 @@ class File_reader():
 
             # Create a Gman class at the source point
             if self.__line[0] == "SOURCE":
-                g_man = gman.Gman(int(self.__line[1]), int(self.__line[2]), self.__line[3])
+                controller_gman = gman.Gman(int(self.__line[1]), int(self.__line[2]), self.__line[3])
             elif self.__line[0] == "DESTINATION":
-                self.__remaining_power = g_man.go_to(int(self.__line[1]), int(self.__line[2]))
+                self.__remaining_power = controller_gman.go_to_target(int(self.__line[1]), int(self.__line[2]))
             elif self.__line[0] == "PRINT_POWER":
                 print("POWER " + str(self.__remaining_power))
