@@ -1,5 +1,5 @@
 from sys import argv
-import file_reader.py
+import file_reader
 
 
 def main():

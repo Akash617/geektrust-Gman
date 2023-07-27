@@ -13,7 +13,7 @@ class Gman():
         return True
 
 
-    def turn(self, opposite):
+    def turn(self, opposite, x, y):
         if opposite == "EW":
             if (y - self.__y) < 0:
                 self.__direction = "S"
@@ -41,19 +41,19 @@ class Gman():
 
     def turn_or_move(self, x, y):
         if self.__direction == "E" and (x - self.__x) <= 0:
-            turn("EW")
+            self.turn("EW", x, y)
         elif self.__direction == "W" and (x - self.__x) >= 0:
-            turn("EW")
+            self.turn("EW", x, y)
         elif self.__direction == "N" and (y - self.__y) <= 0:
-            turn("NS")
+            self.turn("NS", x, y)
         elif self.__direction == "S" and (y - self.__y) >= 0:
-            turn("NS")
+            self.turn("NS", x, y)
         else:
-            move(x, y)
+            self.move(x, y)
 
 
     def go_to(self, x, y):
-        while not on_target(x, y):
-            turn_or_move(x, y)
+        while not self.on_target(x, y):
+            self.turn_or_move(x, y)
 
         return self.__power
