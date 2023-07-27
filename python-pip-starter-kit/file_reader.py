@@ -1,4 +1,4 @@
-import controller
+import file_handler
 
 class File_reader():
     def __init__(self, file):
@@ -9,5 +9,5 @@ class File_reader():
     def read_file(self):
         self.__lines = self.__file.readlines()
 
-        self.__controller = controller.Controller()
-        self.__controller.handle(self.__lines)
+        self.file_handler = file_handler.File_handler()
+        self.file_handler.handle(self.__lines)
